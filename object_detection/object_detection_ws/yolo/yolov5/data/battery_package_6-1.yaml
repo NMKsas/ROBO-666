@@ -1,0 +1,7 @@
+path: ./datasets/battery_package/labeled/augmented
+train: train/images
+val: val/images
+
+nc: 4
+names: ["Battery", "Correct installation", "Incorrect installation", "Plate"]
+

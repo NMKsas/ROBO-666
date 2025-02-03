@@ -1,0 +1,10 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="InstructionTree">
+        <Sequence>
+            <GetTaskProgress service_name="get_task_progress" 
+                             task_progress_output="{task_progress}"/>
+            <GetTaskInstructions service_name="give_instructions"
+                                 task_progress_input="{task_progress}"/>
+        </Sequence>
+    </BehaviorTree>
+</root>

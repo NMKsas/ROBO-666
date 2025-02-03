@@ -1,0 +1,4 @@
+---
+bool is_fault
+string fault 
+string recovery 

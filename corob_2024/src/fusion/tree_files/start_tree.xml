@@ -1,0 +1,31 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="StartTree">
+        <Fallback>
+            <Sequence>
+                <IsAssemblyStarted is_started_in="{is_assembly_started}"
+                                is_started_out="{is_assembly_started}"/>
+                <GiveFeedback service_name="feedback"
+                            message="Assembly process already started."/>
+            </Sequence>
+            <Sequence>
+                <GiveFeedback service_name="feedback"
+                            message="Hello. I am battery assembly assistant. Start process?"/>
+                <Fallback>
+                    <Sequence>                        
+                        <ConfirmStart service_name="confirm" 
+                                    num_attempts="10"
+                                    is_confirmed="{is_assembly_started}"/>
+                        <ResetTaskProgress service_name="reset_task_progress"/> 
+                        <GiveFeedback service_name="feedback"
+                                    message="Assembly process started."/>
+                        <SubTree ID= "HelpTree"/>
+                    </Sequence>
+                    <ForceFailure>
+                        <GiveFeedback service_name="feedback"
+                                    message="Returning to idle state."/>
+                    </ForceFailure>
+                </Fallback>
+            </Sequence>
+        </Fallback>
+    </BehaviorTree>
+</root>

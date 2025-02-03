@@ -1,0 +1,52 @@
+{   
+    "commands" : {
+        "close" : {
+            "infinitive" : "close", 
+            "past_participle" : "closed"
+        },
+        "done" : {
+            "infinitive" : "done", 
+            "past_participle" : ""
+        },
+        "excuse me" : {
+            "infinitive" : "excuse me", 
+            "past_participle" : ""
+        },
+        "give" : {
+            "infinitive" : "give", 
+            "past_participle" : "given"
+        },
+        "hello" : {
+            "infinitive" : "hello", 
+            "past_participle" : ""
+        },
+        "help" : {
+            "infinitive" : "help", 
+            "past_participle" : "helped"
+        },
+        "move" : {
+            "infinitive" : "move", 
+            "past_participle" : "moved"
+        }, 
+        "open" : {
+            "infinitive" : "open", 
+            "past_participle" : "opened"
+        },
+        "pick up" : {
+            "infinitive" : "pick up", 
+            "past_participle" : "picked up"
+        },
+        "place" : {
+            "infinitive" : "place", 
+            "past_participle" : "placed"
+        },
+        "reset" : {
+            "infinitive" : "reset", 
+            "past_participle" : "reset"
+        },
+        "what next" : {
+            "infinitive" : "what next", 
+            "past_participle" : ""
+        }
+    }
+}

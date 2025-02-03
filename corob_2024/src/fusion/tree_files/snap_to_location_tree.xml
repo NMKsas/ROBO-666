@@ -1,0 +1,14 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="SnapToLocation">
+        <Parallel success_count="1">
+            <SnapToLocationVoiceClient  server_name="snap_speech_loc"
+                                        target_type="location"
+                                        strategy="voice"
+                                        target_id_out="{target_id}"/>
+            <SnapToLocationGestureClient    server_name="snap_gesture_loc"
+                                            target_type="location"
+                                            strategy="gesture"
+                                            target_id_out="{target_id}"/>
+        </Parallel>
+    </BehaviorTree>
+</root>

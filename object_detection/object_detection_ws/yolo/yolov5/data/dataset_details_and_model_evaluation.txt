@@ -1,0 +1,68 @@
+In this document the details of the dataset used for training the object detection model and the evaluation of that model are presented.
+
+Note that both the training and the evaluation images were taken in a single room (RoboLab, Tampere University). Thus, there is no guarantee
+that the model will perform this well in other kinds of environments. If the lightning conditions or appearence of the background are significantly
+different in final environment of use compared to RoboLab environment, retraining the model with images taken in the final environment is recommended.
+
+Also note that the training dataset details below present information about data that has already been augmented (using rotation, flipping, and hsv-conversion).
+The size of the original dataset before augmentation was probably around 15 % of the size of the augmented dataset (600-800 images). Unfortunately, detailed
+information of the non-augmented dataset was lost during the development process due to multiple iterations of adding images to the dataset and augmenting them
+separately.
+
+
+
+
+
+################################## TRAINING DATASET DETAILS ##################################
+
+TRAIN
+
+                 Class   Instances
+                   All        9782
+               Battery        3541
+  Correct installation        1382
+Incorrect installation        1382
+                 Plate        3477
+                 
+       Images in total		  3639
+       
+       
+VAL
+
+                 Class   Instances
+                   All        2650
+               Battery         995
+  Correct installation         345
+Incorrect installation         345
+                 Plate         965
+                 
+       Images in total		  1035
+       
+       
+TOTAL
+
+                 Class   Instances
+                   All       12432
+               Battery        4536
+  Correct installation        1727
+Incorrect installation        1727
+                 Plate        4442
+                 
+       Images in total		  4674
+       
+##############################################################################################
+
+
+
+
+
+###################################### MODEL EVALUATION ######################################
+
+                 Class      Images   Instances   Precision      Recall       mAP50    mAP50-95
+                   All         120         300       0.943       0.919       0.968       0.869
+               Battery         120         110           1       0.987       0.995       0.985
+  Correct installation         120          40       0.915       0.875       0.958       0.844
+Incorrect installation         120          40       0.893       0.875       0.937        0.81
+                 Plate         120         110       0.963       0.939       0.984       0.839
+                 
+##############################################################################################

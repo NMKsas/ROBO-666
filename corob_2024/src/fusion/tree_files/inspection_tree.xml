@@ -1,0 +1,38 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="InspectionTree">
+        <Sequence>
+            <Inverter>
+                <SubTree ID="FaultTree"/>
+            </Inverter>
+            <Fallback>
+                <InspectTask service_name="inspect_task"
+                             feedback= "{statusMsg}"
+                             recovery="{recoveryMsg}"/>
+                <ForceFailure>
+                    <Sequence>
+                        <GiveFeedback service_name="feedback"
+                                      message="{statusMsg}"/>
+                        <GiveFeedback service_name="feedback"
+                                      message="{recoveryMsg}"/> 
+                    </Sequence>
+                </ForceFailure>
+            </Fallback>
+            <GiveFeedback service_name="feedback"
+                          message="{statusMsg}"/>
+            <GiveFeedback service_name="feedback"
+                          message="Can you verify that the task is done?"/> 
+            <Fallback>
+                <Sequence>
+                    <ConfirmInspection service_name="confirm"
+                                       num_attempts="10"/>
+                    <VerifyTask service_name="verify_task"/>
+                    <ForceSuccess>
+                        <SubTree ID="HelpTree"/>
+                    </ForceSuccess>
+                </Sequence>
+                <GiveFeedback service_name="feedback"
+                                message="You didn't confirm the task. Assuming task is still unfinished."/> 
+            </Fallback>
+        </Sequence>
+    </BehaviorTree>
+</root>

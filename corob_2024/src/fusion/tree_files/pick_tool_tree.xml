@@ -1,0 +1,43 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="PickToolSubtree">
+        <Fallback>
+            <Sequence>
+                <Fallback>
+                    <Inverter>
+                        <IsGrasping grasp_status_in="{grasping_status}"
+                                    grasp_status_out="{grasping_status}"/>
+                    </Inverter>
+                    <Sequence>
+                        <GiveFeedback service_name="feedback"
+                                        message="Placing the current object to default location"/>
+                        <PlaceActionCall server_name = "place_action_server"
+                                         grasp_status_in = "{grasping_status}"
+                                         grasp_status_out= "{grasping_status}"/> 
+                    </Sequence>
+                </Fallback>
+                <Sequence>    
+                    <SnapToTool service_name="snap_to_tool"
+                                tool_id="{tool_id}"
+                                status_msg="{statusMsg}"
+                                timeout="3000"/>  
+                    <GiveFeedback service_name="feedback"
+                                    message="{statusMsg}"/>
+                    <PickActionCall server_name = "pick_action_server"
+                                    grasp_status_in = "{grasping_status}"
+                                    grasp_status_out= "{grasping_status}"
+                                    status_msg= "{statusMsg}"/>                
+                </Sequence>
+                <GiveActionCall server_name = "give_action_server" 
+                                grasp_status_in= "{grasping_status}"
+                                grasp_status_out= "{grasping_status}"
+                                status_msg="{statusMsg}"/>
+                <GiveFeedback service_name="feedback"
+                              message="{statusMsg}"/>
+            </Sequence>
+            <ForceFailure>
+                <GiveFeedback service_name="feedback"
+                                message="{statusMsg}"/>
+            </ForceFailure>
+        </Fallback>
+    </BehaviorTree>
+</root>

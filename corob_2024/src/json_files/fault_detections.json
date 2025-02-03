@@ -1,0 +1,10 @@
+{
+    "fault_detections" : [
+        {
+            "detection_id" :"2",
+            "name" : "incorrect installation",
+            "fault": "The battery is installed incorrectly",
+            "recovery": "Turn the battery 180 degrees on the plate to correct the position" 
+        }
+    ]
+}

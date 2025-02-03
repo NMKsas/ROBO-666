@@ -1,0 +1,4 @@
+string message
+bool repeat_previous
+---
+bool uttered

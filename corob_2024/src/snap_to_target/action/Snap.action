@@ -1,0 +1,10 @@
+# Define the goal
+string strategy
+string target_type
+---
+# Define the result
+int16 target_id 
+geometry_msgs/PoseWithCovariance target_pose
+---
+# Define a feedback message
+string feedback_msg

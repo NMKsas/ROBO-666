@@ -1,0 +1,32 @@
+<!--
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch" args="align_depth:=True color_width:=1280 camera:=st_cam color_height:=720 color_fps:=30 serial_no:=821312061433 initial_reset:=True manager:=st_cam_manager"/>
+        <arg name="manager" value="ee_cam_manager"/>
+        <arg name="manager" value="ee_cam_manager"/>
+
+-->
+
+<launch>
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
+        <arg name="align_depth" value="True"/>
+        <arg name="color_width" value="1280"/>
+        <arg name="camera" value="ee_cam"/>
+        <arg name="color_height" value="720"/>
+        <arg name="color_fps" value="30"/>
+        <arg name="serial_no" value="845112071321"/>
+        <arg name="initial_reset" value="True"/>
+    </include>
+    
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
+        <arg name="align_depth" value="True"/>
+        <arg name="color_width" value="1280"/>
+        <arg name="camera" value="st_cam"/>
+        <arg name="color_height" value="720"/>
+        <arg name="color_fps" value="30"/>
+        <arg name="serial_no" value="821312061433"/>
+        <arg name="initial_reset" value="True"/>
+    </include>
+
+    <node pkg="rqt_image_view" type="rqt_image_view" name="rqt_image_view_node" output="screen"></node>
+    <node pkg="object_detection" type="yolov5_grasp_pose_detection_node.py" name="yolov5_grasp_pose_detection_node" output="screen"></node>
+
+</launch>

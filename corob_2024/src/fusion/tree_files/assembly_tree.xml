@@ -1,0 +1,35 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="AssemblyTree">
+        <Fallback>
+            <Sequence>
+                <IsCommand command="hello"/>
+                <SubTree ID="StartTree" is_assembly_started="{@is_assembly_started}"/>
+            </Sequence>     
+            <Sequence>
+                <IsCommand command="reset"/>
+                <ResetTaskProgress service_name="reset_task_progress"/>
+                <GiveFeedback service_name="feedback"
+                              message="The task progress is reset."/>
+                <SubTree ID="HelpTree"/>
+            </Sequence>
+            <Sequence>
+                <IsAssemblyStarted is_started_in="{@is_assembly_started}"
+                                   is_started_out="{@is_assembly_started}"/>
+                <Fallback>
+                    <Sequence>
+                        <IsCommand command="help"/>
+                        <SubTree ID="HelpTree"/>
+                    </Sequence>
+                    <Sequence>
+                        <IsCommand command="done"/>
+                        <SubTree ID="InspectionTree"/>
+                    </Sequence>
+                    <Sequence>
+                        <IsCommand command="what next"/>
+                        <SubTree ID="HelpTree"/>
+                    </Sequence>
+                </Fallback>
+            </Sequence>
+        </Fallback>
+    </BehaviorTree>
+</root>

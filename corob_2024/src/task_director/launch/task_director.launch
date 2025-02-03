@@ -1,0 +1,3 @@
+<launch> 
+    <node pkg="task_director" type="task_server" name="task_server" output="screen" />
+</launch>

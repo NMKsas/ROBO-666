@@ -1,0 +1,3 @@
+<launch> 
+    <node pkg="snap_to_target" type="snap_node" name="snap_node" output="screen" />
+</launch>

@@ -1,0 +1,35 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="HelpTree">
+        <Sequence>
+            <SubTree ID="InstructionTree"/>
+            <Fallback>
+                <Sequence>
+                    <Inverter>
+                        <GetTools service_name="get_tools"
+                              tools="{tool_mask}"
+                             tool_queue="{tool_queue}"/> 
+                    </Inverter>
+                    <GiveFeedback service_name="feedback"
+                                  message="You don't need special tools for this task."/>           
+                </Sequence>
+                <Sequence>
+                    <ListTools service_name="list_tools"
+                               tools="{tool_mask}"/>
+                    <GiveFeedback service_name="feedback"
+                               message="Would you like me to hand over the tools?"/>
+                    <Fallback>
+                        <Inverter>
+                            <Confirm service_name="confirm" 
+                                    num_attempts="10"/>
+                        </Inverter>
+                        <LoopNode queue="{tool_queue}" value="{tool_id}">
+                            <ForceSuccess>
+                                <SubTree ID="PickToolSubtree" tool_id="{tool_id}"/>
+                            </ForceSuccess>
+                        </LoopNode>
+                    </Fallback>
+                </Sequence>       
+            </Fallback>
+        </Sequence>
+    </BehaviorTree>
+</root>

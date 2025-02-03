@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import rospy 
+from chatter_submodules import CommandListener
+from chatter_submodules.json_utils import json_root_keys_to_list, \
+                                          read_json_file, name_to_id_dict
+
+# Replace with your path to .json files 
+JSON_PATH = "/root/ROBO-666/corob_2024/src/json_files/"
+RELEVANT_SPEECH_INPUTS_PATH = JSON_PATH + "raw_speech_to_refined_commands.json"
+COMMANDS_PATH = JSON_PATH + "commands.json"
+TARGETS_PATH = JSON_PATH + "targets.json"
+
+
+def listener_main(args=None):
+
+    rospy.init_node('command_listener', anonymous=True)
+    raw_speech_to_refined_commands = read_json_file(RELEVANT_SPEECH_INPUTS_PATH, "relevant_speech_inputs")
+    commands = json_root_keys_to_list(COMMANDS_PATH, "commands")
+    targets = read_json_file(TARGETS_PATH, "targets")
+    directions = name_to_id_dict(targets,'direction')
+    locations = name_to_id_dict(targets,'location')
+    objects = name_to_id_dict(targets, 'object')
+
+    CommandListener(raw_speech_to_refined_commands, commands, directions, locations, objects)
+    
+    rospy.loginfo("Command listener started.")
+    rospy.spin()
+
+if __name__ == "__main__":
+    listener_main()
+
+

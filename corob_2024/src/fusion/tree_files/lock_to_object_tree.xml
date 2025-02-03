@@ -1,0 +1,23 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="LockToObjectSubtree">
+        <Fallback>
+            <IsObjectLocked lock_status_in= "{isObjectLocked}"
+                            lock_status_out="{isObjectLocked}"/>
+            <Sequence>
+                <ListTargets service_name="list_targets"
+                             timeout="3000"
+                             target_type="object"/> 
+                <RetryUntilSuccessful num_attempts="3">
+                    <Sequence>
+                        <SubTree ID="SnapToObject" target_id="{target_id}"/>
+                        <ConfirmObject  service_name="confirm_target"
+                                        target_id_in="{target_id}"
+                                        target_type="object" 
+                                        num_attempts="10" 
+                                        is_confirmed="{result}"/>
+                    </Sequence>
+                </RetryUntilSuccessful>
+            </Sequence>
+        </Fallback>
+    </BehaviorTree>
+</root>

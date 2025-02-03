@@ -1,0 +1,34 @@
+{
+    "detections" : [
+        {
+            "detection_id" : "0", 
+            "name" : "battery",
+            "fault": "The battery is not detected",
+            "recovery": "Place the battery on the plate"
+        },
+        {
+            "detection_id" : "1", 
+            "name" : "correct installation",
+            "fault": "The battery is not placed on the plate",
+            "recovery": ""
+        },
+        {
+            "detection_id" :"2",
+            "name" : "incorrect installation",
+            "fault": "The battery is installed incorrectly",
+            "recovery": "Turn the battery 180 degrees on the plate to correct the position" 
+        },
+        {
+            "detection_id" : "3", 
+            "name" : "plate",
+            "fault": "The plate is not detected",
+            "recovery": "Place the plate on the workspace."
+        },
+        {
+            "detection_id" : "4",
+            "name" : "none", 
+            "fault": "something is still detected", 
+            "recovery" : "You need to empty the workspace to start a new process"
+        }
+    ]
+}

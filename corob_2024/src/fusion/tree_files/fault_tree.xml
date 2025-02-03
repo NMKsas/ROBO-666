@@ -1,0 +1,13 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="FaultTree">
+        <Sequence>
+            <IsFault service_name="is_fault"
+                    feedback="{feedback_msg}"
+                    recovery="{recovery_instructions}"/>
+            <GiveFeedback service_name="feedback"
+                        message="{feedback_msg}"/>
+            <GiveFeedback service_name="feedback"
+                        message="{recovery_instructions}"/>
+        </Sequence>
+    </BehaviorTree>
+</root>

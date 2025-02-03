@@ -1,0 +1,3 @@
+<launch>
+	<node pkg="fusion" type="fusion_main_tree_node" name="fusion_test" output="screen" />
+</launch>

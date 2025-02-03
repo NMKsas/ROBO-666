@@ -1,0 +1,7 @@
+<launch> 
+    <include file="$(find audio_capture)/launch/capture_wave.launch"/>
+    <node pkg="chatter_server" type="feedback_talker" name="talker" output="screen" />
+    <node pkg="chatter_server" type="command_listener" name="listener" output="screen" />
+    <include file="$(find audio_play)/launch/play.launch"/>
+    <node pkg="opendr_perception" type="speech_transcription_node.py" name="speech_transcription_node" output="screen" />
+</launch>

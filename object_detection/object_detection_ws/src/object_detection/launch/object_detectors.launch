@@ -1,0 +1,8 @@
+<!--
+
+-->
+
+<launch>
+    <node pkg="object_detection" type="yolov5_object_detection_node.py" name="ee_object_detection_node" output="screen" args="-i '/ee_cam/color/image_raw' -o '/ee_cam/image_objects_annotated' -d '/ee_cam/objects'"></node>
+    <node pkg="object_detection" type="yolov5_object_detection_node.py" name="st_object_detection_node" output="screen" args="-i '/st_cam/color/image_raw' -o '/st_cam/image_objects_annotated' -d '/st_cam/objects'"></node>
+</launch>

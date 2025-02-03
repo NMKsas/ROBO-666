@@ -1,0 +1,52 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="GripperTree">
+        <Fallback>
+            <Sequence>
+                <IsCommand command="open"/>
+                <Fallback>
+                    <Sequence>
+                        <!--If nothing is grasped, opening is safe and no confirmation needed-->
+                        <Inverter>
+                            <IsGrasping grasp_status_in="{grasping_status}"
+                                        grasp_status_out="{grasping_status}"/>
+                        </Inverter>
+                        <GiveFeedback service_name="feedback"
+                                    message="OPENING"/>
+                        <OpenGripper service_name="gripper_open"
+                                     is_opening="True"
+                                     grasp_status_in="{grasping_status}"
+                                     grasp_status_out="{grasping_status}"/>
+                    </Sequence>
+                    <Sequence>                        
+                        <!--If something is grasped, confirmation needed-->
+                        <GiveFeedback service_name="feedback"
+                                      message="Confirm opening the gripper?"/>
+                        <Confirm service_name="confirm" 
+                                 num_attempts="10"/>
+                        <GiveFeedback service_name="feedback"
+                                      message="OPENING"/>
+                        <OpenGripper service_name="gripper_open"
+                                     is_opening="True"
+                                     grasp_status_in="{grasping_status}"
+                                     grasp_status_out="{grasping_status}"/>
+                    </Sequence>
+                </Fallback>
+            </Sequence>
+            <Sequence>
+                <!--Closing is never safe, confirmation needed-->
+                <IsCommand command="close"/>
+                <GiveFeedback service_name="feedback"
+                                message="Confirm closing the gripper?"
+                                repeat_feedback="False"/>
+                <Confirm service_name="confirm" 
+                         num_attempts="10"/>
+                <GiveFeedback service_name="feedback"
+                              message="CLOSING"/>
+                <CloseGripper service_name="gripper_close"
+                             is_opening="False"
+                             grasp_status_in="{grasping_status}"
+                             grasp_status_out="{grasping_status}"/>
+            </Sequence>
+        </Fallback>
+    </BehaviorTree>
+</root>

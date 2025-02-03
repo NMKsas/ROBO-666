@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+
+<launch>
+  <node name="controller_server" type="controller_srv.py" pkg="fusion_control" output="screen"></node>
+  <node name="pick_node" type="fusion_control_node" pkg="fusion_control" output="screen"></node>
+</launch>

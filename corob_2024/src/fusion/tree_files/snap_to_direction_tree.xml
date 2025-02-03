@@ -1,0 +1,10 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="SnapToDirection">
+        <Parallel success_count="1">
+            <SnapToDirectionVoiceClient server_name="snap_direction"
+                                        target_type="direction"
+                                        strategy="voice"
+                                        target_id_out="{target_id}"/>
+        </Parallel>
+    </BehaviorTree>
+</root>

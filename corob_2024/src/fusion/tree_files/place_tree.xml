@@ -1,0 +1,28 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="PlaceSubtree">
+        <Fallback>
+            <Sequence>
+                <Fallback>
+                    <IsGrasping grasp_status_in="{grasping_status}"
+                                grasp_status_out="{grasping_status}"/>
+                    <Sequence>
+                        <GiveFeedback service_name="feedback"
+                                        message="Proceeding to pick an object first."/>
+                        <SubTree ID="PickSubtree"/>
+                    </Sequence>
+                </Fallback>
+                <SubTree ID="LockToLocationSubtree"/>
+                <PlaceActionCall server_name = "place_action_server"
+                                    grasp_status_in = "{grasping_status}"
+                                    grasp_status_out= "{grasping_status}"
+                                    status_msg="{statusMsg}"/>
+                <GiveFeedback service_name="feedback"
+                              message="{statusMsg}"/>
+            </Sequence>
+            <ForceFailure>
+                <GiveFeedback service_name="feedback"
+                              message="{statusMsg}"/>
+            </ForceFailure>
+        </Fallback>
+    </BehaviorTree>
+</root>

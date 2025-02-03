@@ -1,0 +1,7 @@
+path: ./datasets/tools-labeled/augmented
+train: train/images
+val: val/images
+
+nc: 6
+names: ["extension bar", "nut 10 mm", "nut 13 mm", "ratchet", "socket 10 mm", "socket 13 mm"]
+

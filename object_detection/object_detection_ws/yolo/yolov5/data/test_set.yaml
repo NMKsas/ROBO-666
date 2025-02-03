@@ -1,0 +1,8 @@
+path: ../datasets/test_set
+train: labeled/images
+val: labeled/images
+test: labeled/images
+
+nc: 4
+names: ["Battery", "Correct installation", "Incorrect installation", "Plate"]
+

@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import rospy 
+from snap_strategy_lib.object_strategies import GestureObjectStrategy, \
+                                              SpeechObjectStrategy
+from snap_strategy_lib.location_strategies import SpeechLocationStrategy, \
+                                                  GestureLocationStrategy
+from snap_strategy_lib.direction_strategies import SpeechDirectionStrategy
+from snap_strategy_lib.snap_action_node import SnapActionNode 
+from snap_strategy_lib.detection_filter import DetectionFilter
+from snap_strategy_lib.snap_service_node import SnapServiceNode
+from snap_strategy_lib.json_utils import read_json_file, id_to_name_dict
+
+# Change to your own path 
+JSON_PATH = "/root/ROBO-666/corob_2024/src/json_files/"
+TARGETS_PATH = JSON_PATH + "targets.json"
+TOOLS_PATH = JSON_PATH + "tools.json"
+
+def snapper_main(args=None):
+
+    print("Snapper node")
+    rospy.init_node('snapper', anonymous=True)
+    targets = read_json_file(TARGETS_PATH, 'targets')
+    objects_dict = id_to_name_dict(targets, 'object')
+    tools_dict = id_to_name_dict(targets, 'tool')
+    # avoid multiple instances 
+    detection_filter = DetectionFilter(objects_dict)
+    
+    # Launch both gesture and speech based snappers 
+    gesture_snapper = SnapActionNode(GestureObjectStrategy(detection_filter),'snap_gesture', 30)
+    speech_snapper = SnapActionNode(SpeechObjectStrategy(detection_filter),'snap_speech', 30)
+    speech_loc_snapper = SnapActionNode(SpeechLocationStrategy(targets['location']),'snap_speech_loc', 30)
+    gesture_loc_snapper = SnapActionNode(GestureLocationStrategy(),'snap_gesture_loc', 30)
+    speech_dir_snapper = SnapActionNode(SpeechDirectionStrategy(),'snap_direction', 30)
+    snap_service = SnapServiceNode(detection_filter, tools_dict)
+
+    gesture_snapper.start_node()
+    speech_snapper.start_node()
+    speech_loc_snapper.start_node()
+    gesture_loc_snapper.start_node()
+    speech_dir_snapper.start_node()
+
+if __name__ == "__main__":
+    snapper_main()
+
+

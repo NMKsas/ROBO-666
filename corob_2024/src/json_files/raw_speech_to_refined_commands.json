@@ -1,0 +1,179 @@
+{   
+    "relevant_speech_inputs" : {
+        "close" : {
+            "meaning" : "close"
+        },
+        "done" : {
+            "meaning" : "done"
+        },
+        "dan" : {
+            "meaning" : "done"
+        },
+        "excuse me" : {
+            "meaning" : "excuse me"
+        },
+        "give" : {
+            "meaning" : "give"
+        },
+        "hello" : {
+            "meaning" : "hello"
+        },
+        "help" : {
+            "meaning" : "help"
+        },
+        "hell up" : {
+            "meaning" : "help"
+        },
+        "hail up" : {
+            "meaning" : "help"
+        },
+        "pale up" : {
+            "meaning" : "help"
+        },
+        "male up" : {
+            "meaning" : "help"
+        },
+        "they'll up" : {
+            "meaning" : "help"
+        },
+        "move" : {
+            "meaning" : "move"
+        },
+        "more" : {
+            "meaning" : "move"
+        },
+        "more of" : {
+            "meaning" : "move"
+        },
+        "open" : {
+            "meaning" : "open"
+        },
+        "hoban" : {
+            "meaning" : "open"
+        },
+        "hope and" : {
+            "meaning" : "open"
+        },
+        "pick up" : {
+            "meaning" : "pick up"
+        },
+        "big up" : {
+            "meaning" : "pick up"
+        },
+        "place" : {
+            "meaning" : "place"
+        },
+        "reset" : {
+            "meaning" : "reset"
+        },
+        "what next" : {
+            "meaning" : "what next"
+        },
+        "no" : {
+            "meaning" : "no"
+        },
+        "yes" : {
+            "meaning" : "yes"
+        },
+        "yeah" : {
+            "meaning" : "yes"
+        },
+        "stop" : {
+            "meaning" : "stop"
+        },
+        "thirteen millimeter nut" : {
+            "meaning" : "13 millimeter nut"
+        },
+        "big nut" : {
+            "meaning" : "13 millimeter nut"
+        },
+        "big not" : {
+            "meaning" : "13 millimeter nut"
+        },
+        "nut thirteen millimeters" : {
+            "meaning" : "13 millimeter nut"
+        },
+        "ten millimeter nut" : {
+            "meaning" : "10 millimeter nut"
+        },
+        "small nut" : {
+            "meaning" : "10 millimeter nut"
+        },
+        "small not" : {
+            "meaning" : "10 millimeter nut"
+        },
+        "nut ten millimeters" : {
+            "meaning" : "10 millimeter nut"
+        },
+        "thirteen millimeter socket" : {
+            "meaning" : "13 millimeter socket"
+        },
+        "big socket" : {
+            "meaning" : "13 millimeter socket"
+        },
+        "socket thirteen millimeters" : {
+            "meaning" : "13 millimeter socket"
+        },
+        "a big target" : {
+            "meaning" : "13 millimeter socket"
+        },
+        "big target" : {
+            "meaning" : "13 millimeter socket"
+        },
+        "big get" : {
+            "meaning" : "13 millimeter socket"
+        },
+        "ten millimeter socket" : {
+            "meaning" : "10 millimeter socket"
+        },
+        "small socket" : {
+            "meaning" : "10 millimeter socket"
+        },
+        "socket ten millimeters" : {
+            "meaning" : "10 millimeter socket"
+        },
+        "small so get" : {
+            "meaning" : "10 millimeter socket"
+        },
+        "small get" : {
+            "meaning" : "10 millimeter socket"
+        },
+        "small circuit" : {
+            "meaning" : "10 millimeter socket"
+        },
+        "small circuits" : {
+            "meaning" : "10 millimeter socket"
+        },
+        "smaller target" : {
+            "meaning" : "10 millimeter socket"
+        },
+        "ratchet" : {
+            "meaning" : "ratchet"
+        },
+        "rats it" : {
+            "meaning" : "ratchet"
+        },
+        "left" : {
+            "meaning" : "left"
+        },
+        "right" : {
+            "meaning" : "right"
+        },
+        "home" : {
+            "meaning" : "home"
+        },
+        "down" : {
+            "meaning" : "down"
+        },
+        "up" : {
+            "meaning" : "up"
+        },
+        "front" : {
+            "meaning" : "front"
+        },
+        "back" : {
+            "meaning" : "back"
+        }
+        
+    }
+}

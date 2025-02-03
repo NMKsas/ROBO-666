@@ -1,0 +1,10 @@
+#goal definition
+int16 target_id
+geometry_msgs/Pose pose
+---
+#result definition
+bool success
+---
+#feedback
+bool is_grasping 
+string feedback_msg

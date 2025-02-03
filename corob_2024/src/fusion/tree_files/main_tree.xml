@@ -1,0 +1,40 @@
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
+    <BehaviorTree ID="MainTree">
+        <Sequence>
+            <ForceSuccess>
+                <ReactiveSequence>
+                    <Inverter>
+                        <Sequence>
+                            <IsStopCommand/>
+                            <Fallback>
+                                <RetryUntilSuccessful num_attempts="10">
+                                    <Sequence>
+                                        <Stop service_name="controller_stop"/>
+                                        <GiveFeedback service_name="feedback"
+                                                      message="Stop received. Task aborted."/>
+                                    </Sequence>
+                                </RetryUntilSuccessful>
+                                <HaltTree/>
+                            </Fallback>
+                        </Sequence>
+                    </Inverter>
+                    <Fallback>
+                        <Sequence>
+                            <IsCommand command="pick up"/>
+                            <SubTree ID="PickSubtree" graspingStatus="{graspingStatus}"/>
+                        </Sequence>
+                        <Sequence>
+                            <IsCommand command="place"/>
+                            <SubTree ID="PlaceSubtree" graspingStatus="{graspingStatus}"/>
+                        </Sequence>
+                        <Sequence>
+                            <IsCommand command="give"/>
+                            <SubTree ID="GiveSubtree" graspingStatus="{graspingStatus}"/>
+                        </Sequence>
+                    </Fallback>
+                </ReactiveSequence>
+            </ForceSuccess>
+            <Idle/>
+        </Sequence>
+    </BehaviorTree>
+</root>

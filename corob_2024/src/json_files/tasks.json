@@ -1,0 +1,53 @@
+{
+    "tasks" : [
+        {
+            "task_id" : 0,
+            "instruction" : "Place the plate on the fixture.",
+            "tools" : [],
+            "required_detections" : [3],
+            "fault_detections" : []
+        },
+        {
+            "task_id" : 1,
+            "instruction" : "Place the battery on the plate.",
+            "tools" : [],
+            "required_detections" : [0],
+            "fault_detections" : [2]
+        },
+        {
+            "task_id" : 2,
+            "instruction" : "Place the bracket to hold the battery.",
+            "tools" : [],
+            "required_detections" : [],
+            "fault_detections" : []
+        },
+        {
+            "task_id" : 3,
+            "instruction" : "Screw down the nut holding the bracket.",
+            "tools" : [2,5,0],
+            "required_detections" : [],
+            "fault_detections" : []
+        },
+        {
+            "task_id" : 4,
+            "instruction" : "Place the security belt",
+            "tools" : [],
+            "required_detections" : [],
+            "fault_detections" : []
+        },
+        {
+            "task_id" : 5,
+            "instruction" : "Screw down the nut holding the security belt.",
+            "tools" : [1,4],
+            "required_detections" : [],
+            "fault_detections" : []
+        },
+        {
+            "task_id" : 6,
+            "instruction" : "Remove the items from the workspace to start a new process",
+            "tools" : [],
+            "required_detections" : [-1],
+            "fault_detections" : []
+        }
+    ]
+}

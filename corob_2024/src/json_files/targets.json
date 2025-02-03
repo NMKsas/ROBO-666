@@ -1,0 +1,35 @@
+{
+    "targets": {
+        "object": {
+            "0" : {"id": 0, "name": "ratchet", "grasping_height": 0.015, "required_width":0.05, "required_force": 20},
+            "1" : {"id": 1, "name": "10 millimeter nut", "grasping_height": 0.017, "required_width":0.05, "required_force": 20},
+            "2" : {"id": 2, "name": "13 millimeter nut", "grasping_height": 0.017, "required_width":0.05, "required_force": 20},
+            "3" : {"id": 3, "name": "", "grasping_height": 0.017, "required_width":0.05, "required_force": 20},
+            "4" : {"id": 4, "name": "10 millimeter socket", "grasping_height": 0.015, "required_width":0.05, "required_force": 20},
+            "5" : {"id": 5, "name": "13 millimeter socket", "grasping_height": 0.015, "required_width":0.05, "required_force": 20}
+        },
+        "location": {
+            "0" : {"id": 0, "name": "home", "coordinates":  [0.40, 0.0, 0.5, 1.0, 0.0, 0.0, 0.0]},
+            "1" : {"id": 1, "name": "front", "coordinates": [0.50, 0.0, 0.5, 1.0, 0.0, 0.0, 0.0]},
+            "2" : {"id": 2, "name": "left", "coordinates": [0.50, -0.33, 0.5, 1.0, 0.0, 0.0, 0.0]},
+            "3" : {"id": 3, "name": "right", "coordinates": [0.50, 0.33, 0.5, 1.0, 0.0, 0.0, 0.0]}
+        },
+        "direction": {
+            "0" : {"id": 0, "name": "back"},
+            "1" : {"id": 1, "name": "down"},
+            "2" : {"id": 2, "name": "front"},
+            "3" : {"id": 3, "name": "left"},
+            "4" : {"id": 4, "name": "right"},
+            "5" : {"id": 5, "name": "up"},
+            "6" : {"id": 6, "name": "home"}
+        },
+        "tool": {
+            "0" : {"id" : 0, "name" : "a rachet", "size" : "", "unit" : ""},
+            "1" : {"id" : 1, "name" : "a nut", "size" : "10", "unit" : "millimeters"},
+            "2" : {"id" : 2, "name" : "a nut", "size" : "13", "unit" : "millimeters"},
+            "3" : {"id" : 3, "name" : "", "size" : "", "unit" : ""},
+            "4" : {"id" : 4, "name" : "a socket", "size" : "10", "unit" : "millimeters"},
+            "5" : {"id" : 5, "name" : "a socket", "size" : "13", "unit" : "millimeters"}            
+        }
+    }
+}

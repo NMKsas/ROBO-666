@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="task_director" type="task_server" name="task_server" output="screen" />
+    <test test-name="task_director_test" pkg="task_director" type="test_cases.py"/>
+  </launch>

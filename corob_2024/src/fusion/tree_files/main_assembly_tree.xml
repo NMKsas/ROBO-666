@@ -1,0 +1,55 @@
+<root BTCPP_format="4" main_tree_to_execute="MainTreeAssembly">
+    <BehaviorTree ID="MainTreeAssembly">
+        <Sequence>
+            <ForceSuccess>
+                <ReactiveSequence>
+                    <Inverter>
+                        <Sequence>
+                            <IsStopCommand/>
+                            <Fallback>
+                                <RetryUntilSuccessful num_attempts="10">
+                                    <Sequence>
+                                        <Stop service_name="controller_stop"/>
+                                        <GiveFeedback service_name="feedback"
+                                                      message="Stop received. Task aborted."/>
+                                    </Sequence>
+                                </RetryUntilSuccessful>
+                                <HaltTree/>
+                            </Fallback>
+                        </Sequence>
+                    </Inverter>
+                    <Fallback>
+                        <Sequence>
+                            <IsCommand command="excuse me"/>
+                            <GiveFeedback service_name="feedback"
+                                          repeat_feedback="True"/>
+                        </Sequence>
+                        <Fallback>
+                            <Fallback>
+                                <Sequence>
+                                    <IsCommand command="pick up"/>
+                                    <SubTree ID="PickSubtree" grasping_status="{@grasping_status}"/>
+                                </Sequence>
+                                <Sequence>
+                                    <IsCommand command="place"/>
+                                    <SubTree ID="PlaceSubtree" grasping_status="{@grasping_status}"/>
+                                </Sequence>
+                                <Sequence>
+                                    <IsCommand command="give"/>
+                                    <SubTree ID="GiveSubtree" grasping_status="{@grasping_status}"/>
+                                </Sequence>
+                                <Sequence>
+                                    <IsCommand command="move"/>
+                                    <SubTree ID="MoveSubtree"/>
+                                </Sequence>
+                                <SubTree ID="GripperTree" grasping_status="{@grasping_status}"/>
+                            </Fallback>
+                            <SubTree ID="AssemblyTree"/>
+                        </Fallback>
+                    </Fallback>
+                </ReactiveSequence>
+            </ForceSuccess>
+            <Idle/>
+        </Sequence>
+    </BehaviorTree>
+</root>

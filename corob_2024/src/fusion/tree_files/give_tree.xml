@@ -1,0 +1,41 @@
+<root BTCPP_format="4">
+    <BehaviorTree ID="GiveSubtree">
+        <Fallback>
+            <Sequence>
+                <Fallback>
+                    <Sequence>
+                        <IsGrasping grasp_status_in="{grasping_status}"
+                                    grasp_status_out="{grasping_status}"/>
+                        <GiveFeedback service_name="feedback"
+                                    message="Giving currently grasped object"/>
+                    </Sequence>
+                    <Sequence>
+                        <IsObjectDetected service_name="is_object_detected"
+                                        timeout="3000"/>
+                        <Sequence>
+                            <SubTree ID="LockToObjectSubtree"/>
+                            <GiveFeedback service_name="feedback"
+                                        message="Picking up the object"/>
+                            <PickActionCall server_name = "pick_action_server"
+                                            grasp_status_in = "{grasping_status}"
+                                            grasp_status_out= "{grasping_status}"
+                                            status_msg="{statusMsg}"/>
+                            <GiveFeedback service_name="feedback"
+                                          message="Giving the picked object"/>
+                        </Sequence>
+                    </Sequence>
+                </Fallback>
+                <GiveActionCall server_name = "give_action_server" 
+                                grasp_status_in= "{grasping_status}"
+                                grasp_status_out= "{grasping_status}"
+                                status_msg="{statusMsg}"/>
+                <GiveFeedback service_name="feedback"
+                              message="{statusMsg}"/>
+            </Sequence>
+            <ForceFailure>
+                <GiveFeedback service_name="feedback"
+                              message="{statusMsg}"/>   
+            </ForceFailure>
+        </Fallback>
+    </BehaviorTree>
+</root>
