@@ -7,6 +7,9 @@ The module has one main class, `SnapActionNode`, to implement a ROS1 action serv
 The package also includes a simple class `SnapServiceNode` as tool selection service. 
 
 Currently implemented strategies are divided by the target category into separate files. The user is free to come up with some alternative algorithms besides the ones provided. 
+Additionally there is a simple class `SnapServiceNode` for a simple tool selection service. 
+
+Currently implemented strategies are divided by the target category into separate files. 
 
 | File                      | Description                                                                         |
 | ------------------------- | ----------------------------------------------------------------------------------- |
