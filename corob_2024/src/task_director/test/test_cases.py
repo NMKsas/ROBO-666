@@ -82,6 +82,7 @@ if __name__ == '__main__':
     rostest.rosrun(PKG, NAME, TestTaskDirector, sys.argv)
 
 
+""" More unimplemented unit tests, due to lack of time"""
 """
 class CaseA(unittest.TestCase):
     # If amount of tasks is more than the int16 mask allows, user is informed  

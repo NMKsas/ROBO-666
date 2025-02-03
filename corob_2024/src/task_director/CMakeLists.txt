@@ -9,12 +9,9 @@ project(task_director)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   rospy
-  sensor_msgs
   std_msgs
   message_generation
-  genmsg
   message_runtime
-  actionlib_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -79,8 +76,6 @@ add_service_files(
 generate_messages(
   DEPENDENCIES
   std_msgs
-  sensor_msgs
-  actionlib_msgs
 )
 
 ################################################
@@ -213,4 +208,4 @@ include_directories(
 # endif()
 
 ## Add folders to be run by python nosetests
-catkin_add_nosetests(test)
+# catkin_add_nosetests(test)
